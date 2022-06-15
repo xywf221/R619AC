@@ -21,6 +21,12 @@ on:
 #      - master
 #    paths:
 #      - 'r619ac.config'
+  workflow_dispatch:
+    inputs:
+      ssh:
+        description: 'SSH connection to Actions'
+        required: false
+        default: 'false'
   schedule:
     - cron: 30 8 */20 * *
 #          分 时 日 月 周5
