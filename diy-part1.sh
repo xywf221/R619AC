@@ -30,3 +30,6 @@ git clone https://github.com/open-mesh-mirror/batman-adv.git package/batman-adv
 
 # CONFIG_PACKAGE_luci-app-filebrowser=y
 # git clone https://github.com/immortalwrt/openwrt-filebrowser.git package/luci-app-filebrowser
+
+# 增加 alist
+git clone https://github.com/sbwml/openwrt-alist package/luci-app-alist
