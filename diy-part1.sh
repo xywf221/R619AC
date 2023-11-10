@@ -19,14 +19,14 @@
 # git clone https://github.com/xiaorouji/openwrt-package/tree/master/lienol/luci-app-passwall package/luci-app-passwall
 git clone https://github.com/kenzok8/openwrt-packages.git package/openwrt-packages
 git clone https://github.com/kenzok8/small.git package/small
-git clone https://github.com/open-mesh-mirror/batman-adv.git package/batman-adv
+# git clone https://github.com/open-mesh-mirror/batman-adv.git package/batman-adv
 
 # 增加ssr（上述kenzok8/openwrt-packages已包含）
 # git clone https://github.com/kenzok8/openwrt-packages.git package/openwrt-packages
 # git clone https://github.com/fw876/helloworld.git package/diy-packages/luci-app-ssr-plus
 
 #  增加luci-app-unblockneteasemusic，来源immortalwrt
-git clone https://github.com/immortalwrt/luci-app-unblockneteasemusic.git package/luci-app-unblockneteasemusic
+# git clone https://github.com/immortalwrt/luci-app-unblockneteasemusic.git package/luci-app-unblockneteasemusic
 
 # CONFIG_PACKAGE_luci-app-filebrowser=y
-git clone https://github.com/immortalwrt/openwrt-filebrowser.git package/luci-app-filebrowser
+# git clone https://github.com/immortalwrt/openwrt-filebrowser.git package/luci-app-filebrowser
