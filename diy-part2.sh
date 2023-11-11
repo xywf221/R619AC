@@ -31,6 +31,8 @@ rm -rf package/lean/luci-theme-argon
 # git clone https://github.com/sypopo/luci-theme-argon-mc.git package/lean/luci-theme-argon-mc
 git clone https://github.com/Leo-Jo-My/luci-theme-opentomcat.git package/lean/luci-theme-opentomcat
 git clone https://github.com/garypang13/luci-theme-edge.git package/lean/luci-theme-edge
+# tailscale
+git clone https://github.com/selfcan/luci-app-tailscale package/lean/luci-app-tailscale
 # 更新
 # ./scripts/feeds update -a && ./scripts/feeds install -a
 
