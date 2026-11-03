@@ -6,44 +6,35 @@
 # Lisence: MIT
 # Author: P3TERX
 # Blog: https://p3terx.com
-# sed '1,3s/my/your/g'
-# sed -i '93s/0xf60000/0x1fb0000/g' target/
 #=================================================
+
+# ===== 基础设置：默认 IP 与主机名 =====
 # Modify default IP
-# sed -i 's/15744/32448/g'
 sed -i 's/192.168.1.1/192.168.7.1/g' package/base-files/files/bin/config_generate
 
 # Modify hostname
 sed -i 's/OpenWrt/R619ac/g' package/base-files/files/bin/config_generate
 
-
-
-# 取消bootstrap为默认主题
+# ===== 主题处理 =====
+# 取消 bootstrap 为默认主题（删除它的首启默认设置行）
 sed -i '/set luci.main.mediaurlbase=\/luci-static\/bootstrap/d' feeds/luci/themes/luci-theme-bootstrap/root/etc/uci-defaults/30_luci-theme-bootstrap
 
-# 删除原主题包
+# 删除 lean 里的 argon 主题包（改用 feeds 版本，避免重复）
 rm -rf package/lean/luci-theme-argon
-# rm -rf openwrt/package/lean/luci-theme-netgear
 
-# 添加新的主题包
-# git clone https://github.com/jerrykuku/luci-theme-argon.git package/lean/luci-theme-argon
-# git clone https://github.com/sypopo/luci-theme-atmaterial.git package/lean/luci-theme-atmaterial
-# git clone https://github.com/sypopo/luci-theme-argon-mc.git package/lean/luci-theme-argon-mc
+# 克隆额外主题与插件到 lean
 git clone https://github.com/Leo-Jo-My/luci-theme-opentomcat.git package/lean/luci-theme-opentomcat
 git clone https://github.com/garypang13/luci-theme-edge.git package/lean/luci-theme-edge
-# tailscale
 git clone https://github.com/selfcan/luci-app-tailscale package/lean/luci-app-tailscale
-# 更新
-# ./scripts/feeds update -a && ./scripts/feeds install -a
 
-##########
+# ===== 版本号与默认主题 =====
 # Modify the version number
 sed -i "s/OpenWrt /Leopard build $(TZ=UTC-8 date "+%Y.%m.%d") @ OpenWrt /g" package/lean/default-settings/files/zzz-default-settings
 
-# Modify default theme
-# sed -i 's/luci-theme-bootstrap/luci-theme-argon/g' feeds/luci/collections/luci/Makefile
+# Modify default theme（集合包的默认主题依赖改为 vantage）
 sed -i 's/luci-theme-bootstrap/luci-theme-vantage/g' feeds/luci/collections/luci/Makefile feeds/luci/collections/luci-light/Makefile
 
+# ===== 内核构建信息 =====
 # Add kernel build user
 [ -z $(grep "CONFIG_KERNEL_BUILD_USER=" .config) ] &&
     echo 'CONFIG_KERNEL_BUILD_USER="Leopard"' >>.config ||
@@ -53,8 +44,3 @@ sed -i 's/luci-theme-bootstrap/luci-theme-vantage/g' feeds/luci/collections/luci
 [ -z $(grep "CONFIG_KERNEL_BUILD_DOMAIN=" .config) ] &&
     echo 'CONFIG_KERNEL_BUILD_DOMAIN="GitHub Actions"' >>.config ||
     sed -i 's@\(CONFIG_KERNEL_BUILD_DOMAIN=\).*@\1$"GitHub Actions"@' .config
-
-
-# 删除lean里的百度文本（编译失败），增加百度PCS-web
-# rm -rf package/lean/baidupcs-web
-# git clone https://github.com/liuzhuoling2011/baidupcs-web.git package/lean/baidupcs-web
