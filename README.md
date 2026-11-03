@@ -17,10 +17,10 @@ https://github.com/kenzok8/openwrt-packages
 
 
 # 最新版下载&Download Latest
-[![GitHub release (latest by date)](https://img.shields.io/github/v/release/leopardciaw/R619AC?style=for-the-badge&label=Download)](https://github.com/leopardciaw/R619AC/releases/latest)
+[![GitHub release (latest by date)](https://img.shields.io/github/v/release/xywf221/R619AC?style=for-the-badge&label=Download)](https://github.com/xywf221/R619AC/releases/latest)
 
 
-[所有已发布 & All Release](https://github.com/leopardciaw/R619AC/releases)
+[所有已发布 & All Release](https://github.com/xywf221/R619AC/releases)
 
 # 请注意
 1.集成的插件只是常用到的，未能全部测试插件的可用性，请多多包涵。  
