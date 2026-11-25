@@ -19,13 +19,11 @@ sed -i 's/OpenWrt/R619ac/g' package/base-files/files/bin/config_generate
 # 取消 bootstrap 为默认主题（删除它的首启默认设置行）
 sed -i '/set luci.main.mediaurlbase=\/luci-static\/bootstrap/d' feeds/luci/themes/luci-theme-bootstrap/root/etc/uci-defaults/30_luci-theme-bootstrap
 
-# 删除 lean 里的 argon 主题包（改用 feeds 版本，避免重复）
-rm -rf package/lean/luci-theme-argon
+# 彻底删除 Argon / Argone 主题及其配置插件（lean、feeds、kenzok8 仓库里的所有副本）
+rm -rf package/lean/luci-theme-argon*
+rm -rf feeds/luci/themes/luci-theme-argon* feeds/luci/applications/luci-app-argon*-config
+find package/ feeds/ -maxdepth 3 \( -name 'luci-theme-argon*' -o -name 'luci-app-argon*-config' \) -exec rm -rf {} + 2>/dev/null || true
 
-# 克隆额外主题与插件到 lean
-git clone https://github.com/Leo-Jo-My/luci-theme-opentomcat.git package/lean/luci-theme-opentomcat
-git clone https://github.com/garypang13/luci-theme-edge.git package/lean/luci-theme-edge
-git clone https://github.com/selfcan/luci-app-tailscale package/lean/luci-app-tailscale
 
 # ===== 版本号与默认主题 =====
 # Modify the version number
